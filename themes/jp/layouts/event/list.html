@@ -1,0 +1,17 @@
+{{ partial "header.html" .}}
+<main>
+    <section class="event-listings">
+    {{ range first 100 .Data.Pages }}
+        <article class="event">
+            <div class="event__details">
+                <span class="event__date">{{ dateFormat "Monday, Jan 2, 2006" .Params.EventDate }}</span>
+                <span class="event__title">{{ .Title }}</span>
+                <span class="event__venue">{{ .Params.Venue }}</span>
+                <span class="event__citycountry">{{ .Params.City }}, {{ .Params.Country }}</span>
+            </div>
+            <a class="event__button" href="{{ .Params.TicketsURL }}">Buy Tickets</a>
+        </article>
+    {{ end }}
+</section>    
+</main>
+{{ partial "footer.html" .}}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+    <title>{{ .Title }}</title>
+</head>
+
+{{if .IsHome}}
+<body class="home">
+{{ else }}
+{{ if eq .Type "music" }}
+<body class="music">
+{{ end }}
+{{ end }}
+
+        <header>
+            <h1><a href="/">{{ .Site.Title }}</a>
+                <!-- {{if not .IsHome }}
+        / <span>{{ .Title }}</span>
+        {{ end }} -->
+            </h1>
+            <nav class="social-nav">
+                <ul>
+                    {{ range .Site.Menus.social }}
+                    <li><a class="social-nav__menuItem social-nav__menuItem--{{ lower .Name }}" href="{{ .URL }}" title="{{ .Name }}">{{ .Pre }}{{ .Name }}</a></li>
+                    {{ end }} 
+                </ul>
+            </nav>
+            <nav class="main-nav">
+                <ul>
+                    {{ range .Site.Menus.main }}
+                    <li><a class="main-nav__menuItem" href="{{ .URL }}" title="{{ .Name }}">{{ .Name }}</a></li>
+                    {{ end }}
+                </ul>
+
+            </nav>
+        </header>
+
+               

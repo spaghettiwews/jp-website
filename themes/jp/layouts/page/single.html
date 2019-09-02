@@ -1,0 +1,17 @@
+{{ partial "header.html" .}}
+<main>
+    <h1>{{ .Title }}</h1>
+    <div class="page-content">
+        <div class="page-content__copy">
+            {{ .Content }}
+        </div>
+        <div class="page-content__featuredImages" data-flickity='{ "cellAlign": "left", "contain": true, "freeScroll": true, "imagesLoaded": true, "pageDots": false, "prevNextButtons": false }'>
+            {{ range .Params.FeaturedImages }}
+                <img src="{{ . }}">
+            {{ end }}
+        </div>
+    </div>
+</main>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.2.1/flickity.min.css" integrity="sha256-IKIuKgYQ+ogofw+KAz4fjF+zq7fwoNUnEVts493jKKE=" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.2.1/flickity.pkgd.min.js" integrity="sha256-3Maq7M1TC8sOke8B4gRkhfGtETqGWq+xenQO7k2mHjI=" crossorigin="anonymous"></script>
+{{ partial "footer.html" .}}
