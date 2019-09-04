@@ -1,7 +1,6 @@
 {{ partial "header.html" .}}
 <main>
-    {{ range first 100 .Data.Pages }}
-        {{ if eq .Type "music" }}
+    {{ range .Data.Pages }}
         <article>
             <a class="detailed-albumview-toggle" href="#"><img src="{{ .Params.albumartworkuri }}"></a>
             <h2>{{ .Title }}</h2>
@@ -18,8 +17,11 @@
                 <div class="wrap">
                     <div class="detailed-albumview__buttons">
                         <a class="close" href="#"><svg width="16" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 75 75'><title>close</title><path d='M87.5,97.6L85.1,100,50,64.9,14.9,100l-2.4-2.4L47.6,62.5,12.5,27.4,14.9,25,50,60.1,85.1,25l2.4,2.4L52.4,62.5Z' transform='translate(-12.5 -25)'/></svg>Close</a>
+                        {{ $shareTitle := .Title }}
+                        {{ $shareUrl := .Permalink }}
                         {{ range .Site.Menus.sharing }}
-                        <a href="{{ .URL }}" title="{{ .Name }}">{{ .Pre }}{{ .Name }}</a>
+                            {{ $temp := replace .URL "shareurl" $shareUrl }} 
+                            <a target="_blank" href='{{ replace $temp "title" $shareTitle }}' title="{{ .Name }}">{{ .Pre }}{{ .Name }}</a>
                         {{ end }} 
                     </div>
                     <div class="detailed-albumview__artwork"><img src="{{ .Params.albumartworkuri }}"></div>
@@ -27,7 +29,6 @@
                 </div>
             </div>
         </article>
-        {{ end }}
     {{ end }}
 </main>
 <script>
