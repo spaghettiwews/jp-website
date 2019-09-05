@@ -21,7 +21,7 @@
                         {{ $shareUrl := .Permalink }}
                         {{ range .Site.Menus.sharing }}
                             {{ $temp := replace .URL "shareurl" $shareUrl }} 
-                            <a target="_blank" href='{{ replace $temp "title" $shareTitle }}' title="{{ .Name }}">{{ .Pre }}{{ .Name }}</a>
+                            <a target="_blank" href='{{ replace $temp "title" $shareTitle }}' title="{{ .Name }}">{{ readFile .Pre | safeHTML }}{{ .Name }}</a>
                         {{ end }} 
                     </div>
                     <div class="detailed-albumview__artwork"><img src="{{ .Params.albumartworkuri }}"></div>
