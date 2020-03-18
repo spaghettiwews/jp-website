@@ -1,5 +1,3 @@
-# file ./softwareengineering/.github/workflow/deploy.yml
-
 name: "deploy website"
 
 on:
@@ -36,7 +34,7 @@ jobs:
       - name: "deploy compiled files"
         run: |
           git config --global user.email "spaghettiwews@outlook.com"
-          git config --global user.name "spaghettiwews"
+          git config --global user.name $GITHUB_ACTOR
           cd public
           git add .
           msg="rebuilding site `date`"
@@ -45,4 +43,3 @@ jobs:
           fi
           git commit -m "$msg"
           git push origin master
-          echo $GITHUB_ACTOR
