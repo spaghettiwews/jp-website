@@ -33,3 +33,16 @@ jobs:
           cd ..
       - name: "compiling website"
         run: hugo
+      - name: "deploy compiled files"
+        run: |
+          git config --global user.email "spaghettiwews@outlook.com"
+          git config --global user.name "spaghettiwews"
+          cd public
+          git add .
+          msg="rebuilding site `date`"
+          if [ $# -eq 1 ]
+            then msg="$1"
+          fi
+          git commit -m "$msg"
+          git push origin master
+          echo $GITHUB_ACTOR
