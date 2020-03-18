@@ -40,7 +40,7 @@ pluralizelisttitles = false
 
     [[menu.main]]
     name = "Contact"
-    url = "#"
+    url = "/contact/"
     weight = 70
 
     [[menu.social]]
